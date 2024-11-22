@@ -19,7 +19,7 @@ function getMatchForPerson(person, allPeople, takenPeople) {
   );
 
   if (possibleMatches.length === 0) {
-    throw Error(`Unable to find match for ${person}`);
+    throw new Error(`Unable to find match for ${person}`);
   }
 
   return random(possibleMatches);
@@ -62,7 +62,7 @@ function getCycle(start, matches) {
     cycle.add(match);
     curr = match;
   } while (cycle.size < 100);
-  throw Error(`Could not find cycle distance for ${start}`);
+  throw new Error(`Could not find cycle for ${start}`);
 }
 
 /** @param {Map<string, string>} matches */
