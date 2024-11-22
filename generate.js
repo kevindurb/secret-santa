@@ -1,8 +1,6 @@
 import peopleJSON from './people.json' with { type: 'json' };
 import { shuffle, random, loadFromJSON } from './utils.js';
 
-const MIN_CYCLE_SIZE = 4;
-
 /** @type {Map<string, Set<string>>} */
 const peopleExclusions = loadFromJSON(peopleJSON);
 
@@ -92,8 +90,7 @@ function verifyMatchGraph(matches) {
     `Total Cycles: ${cycles.size}; Max Cycle Length: ${maxCycleLength}, Min Cycle Length: ${minCycleLength}`,
   );
 
-  if (minCycleLength < MIN_CYCLE_SIZE)
-    throw new Error('Min cycle length < ${MIN_CYCLE_SIZE}');
+  if (cycles.size > 1) throw new Error('More than one cycle found');
 }
 
 do {
